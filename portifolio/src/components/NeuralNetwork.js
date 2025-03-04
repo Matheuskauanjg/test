@@ -19,9 +19,12 @@ const NeuralNetwork = () => {
 
     document.body.appendChild(canvas);
 
-    const initialParticleCount = 100;
-    const maxDistance = 120; 
-    const geometry = new THREE.SphereGeometry(1, 32, 32);
+    // Definindo a quantidade de partículas de acordo com o dispositivo
+    const isMobile = window.innerWidth <= 768;  // Detecta se é mobile
+    const initialParticleCount = isMobile ? 20 : 100;  // Menos partículas no celular
+    const maxDistance = 120; // Distância máxima para as conexões
+
+    const geometry = new THREE.SphereGeometry(isMobile ? 2 : 1, 32, 32);  // Partículas maiores no celular
     const material = new THREE.MeshBasicMaterial({ color: 0x00ff00, opacity: 0.7, transparent: true });
 
     const particles = [];
@@ -36,8 +39,8 @@ const NeuralNetwork = () => {
         0
       );
       particle.velocity = new THREE.Vector3(
-        (Math.random() - 0.5) * 0.6, 
-        (Math.random() - 0.5) * 0.6, 
+        (Math.random() - 0.5) * 0.6,
+        (Math.random() - 0.5) * 0.6,
         0
       );
       particles.push(particle);
@@ -127,8 +130,10 @@ const NeuralNetwork = () => {
       renderer.render(scene, camera);
     };
 
-    camera.position.z = 500;
+    // Ajustando a câmera para telas pequenas
+    camera.position.z = isMobile ? 200 : 500; // Câmera mais próxima no celular
 
+    // Criação das partículas
     for (let i = 0; i < initialParticleCount; i++) {
       createParticle();
     }
