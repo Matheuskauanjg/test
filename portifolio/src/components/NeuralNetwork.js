@@ -7,7 +7,7 @@ const NeuralNetwork = () => {
     const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
     const renderer = new THREE.WebGLRenderer({ alpha: true });
 
-    // Definindo o tamanho do canvas
+    // Definindo o tamanho do canvas e ajustando para preencher a tela inteira
     renderer.setSize(window.innerWidth, window.innerHeight);
     renderer.setClearColor(0x111111, 1);
 
@@ -19,12 +19,12 @@ const NeuralNetwork = () => {
 
     document.body.appendChild(canvas);
 
-    // Definindo a quantidade de partículas de acordo com o dispositivo
+    // Detecção de dispositivos móveis
     const isMobile = window.innerWidth <= 768;  // Detecta se é mobile
     const initialParticleCount = isMobile ? 20 : 100;  // Menos partículas no celular
     const maxDistance = 120; // Distância máxima para as conexões
 
-    const geometry = new THREE.SphereGeometry(isMobile ? 2 : 1, 32, 32);  // Partículas maiores no celular
+    const geometry = new THREE.SphereGeometry(isMobile ? 3 : 1, 32, 32);  // Partículas maiores no celular
     const material = new THREE.MeshBasicMaterial({ color: 0x00ff00, opacity: 0.7, transparent: true });
 
     const particles = [];
@@ -139,6 +139,13 @@ const NeuralNetwork = () => {
     }
 
     animate();
+
+    // Atualiza o tamanho do canvas e o ajuste da cena quando a janela for redimensionada
+    window.addEventListener('resize', () => {
+      renderer.setSize(window.innerWidth, window.innerHeight);
+      camera.aspect = window.innerWidth / window.innerHeight;
+      camera.updateProjectionMatrix();
+    });
 
     return () => {
       // Limpeza final para liberar todos os recursos
