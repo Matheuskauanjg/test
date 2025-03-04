@@ -21,7 +21,7 @@ const NeuralNetwork = () => {
 
     // Detecção de dispositivos móveis
     const isMobile = window.innerWidth <= 768;  // Detecta se é mobile
-    const initialParticleCount = isMobile ? 50 : 50;  // Aumenta para 50 em ambos os casos
+    const initialParticleCount = isMobile ? 80 : 80;  // Aumenta para 80 em ambos os casos
     const maxDistance = 120; // Distância máxima para as conexões
 
     const geometry = new THREE.SphereGeometry(isMobile ? 3 : 1, 32, 32);  // Partículas maiores no celular
@@ -35,7 +35,7 @@ const NeuralNetwork = () => {
       const particle = new THREE.Mesh(geometry, material);
       particle.position.set(
         Math.random() * window.innerWidth - window.innerWidth / 2,
-        Math.random() * window.innerHeight - window.innerHeight / 2,
+        isMobile ? Math.random() * (window.innerHeight - 100) - window.innerHeight / 2 : Math.random() * window.innerHeight - window.innerHeight / 2,
         0
       );
       particle.velocity = new THREE.Vector3(
