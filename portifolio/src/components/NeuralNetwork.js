@@ -21,7 +21,7 @@ const NeuralNetwork = () => {
 
     // Detecção de dispositivos móveis
     const isMobile = window.innerWidth <= 768;  // Detecta se é mobile
-    const initialParticleCount = isMobile ? 20 : 100;  // Menos partículas no celular
+    const initialParticleCount = isMobile ? 50 : 50;  // Aumenta para 50 em ambos os casos
     const maxDistance = 120; // Distância máxima para as conexões
 
     const geometry = new THREE.SphereGeometry(isMobile ? 3 : 1, 32, 32);  // Partículas maiores no celular
