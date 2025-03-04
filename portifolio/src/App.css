@@ -1,8 +1,8 @@
-/* Define o fundo cobrindo toda a tela */
+/* Definindo o fundo e a estilização básica */
 body {
-  background-color: #111;
+  background-color: #181818; /* Fundo mais suave para contrastar com o conteúdo */
   color: #fff;
-  font-family: Arial, sans-serif;
+  font-family: 'Roboto', sans-serif; /* Fonte moderna e limpa */
   margin: 0;
   padding: 0;
   display: flex;
@@ -10,7 +10,7 @@ body {
   align-items: center;
   min-height: 100vh;
   width: 100vw;
-  overflow-x: hidden; /* Impede barra de rolagem horizontal */
+  overflow-x: hidden;
 }
 
 /* Container principal */
@@ -20,13 +20,23 @@ body {
   flex-direction: column;
   align-items: center;
   text-align: center;
-  padding: 20px;
+  padding: 30px;
   box-sizing: border-box;
 }
 
 /* Cabeçalho */
 header {
-  margin-bottom: 20px;
+  margin-bottom: 30px;
+  font-size: 1.5em;
+}
+
+header h1 {
+  font-size: 2em;
+  color: #00ff00; /* Cor verde neon para o título */
+}
+
+header p {
+  color: #aaa;
 }
 
 /* Container dos cards */
@@ -35,44 +45,46 @@ header {
   flex-wrap: wrap;
   justify-content: center;
   gap: 20px;
-  max-width: 90vw; /* Garante que os cards não saiam da tela */
+  max-width: 90vw;
   padding: 20px;
   box-sizing: border-box;
-  overflow: hidden;
 }
 
 /* Estiliza os cards */
 .info-card {
-  background-color: black;
-  border: 3px solid #00ff00;
-  padding: 20px;
-  width: 280px;
+  background-color: #222; /* Fundo mais escuro para os cards */
+  border: 2px solid #00ff00;
+  padding: 25px;
+  width: 300px;
   text-align: center;
-  border-radius: 10px;
-  box-shadow: 0px 0px 10px #00ff00;
-  transition: transform 0.3s ease-in-out;
-  flex-shrink: 0; /* Evita que os cards fiquem pequenos */
+  border-radius: 15px;
+  box-shadow: 0px 0px 15px rgba(0, 255, 0, 0.6);
+  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease;
 }
 
 .info-card:hover {
   transform: scale(1.05);
+  box-shadow: 0px 0px 25px rgba(0, 255, 0, 1);
 }
 
 .info-card h2 {
   color: #00ff00;
-  margin-bottom: 10px;
+  margin-bottom: 15px;
+  font-size: 1.2em;
 }
 
 .info-card ul {
   list-style: none;
   padding: 0;
+  font-size: 1em;
 }
 
 .info-card li {
   margin: 10px 0;
+  color: #ddd;
 }
 
-/* Responsividade */
+/* Estilos responsivos */
 @media (max-width: 1024px) {
   .info-container {
     justify-content: center;
@@ -83,5 +95,10 @@ header {
   .info-container {
     flex-direction: column;
     align-items: center;
+  }
+
+  .info-card {
+    width: 90%;
+    padding: 20px;
   }
 }

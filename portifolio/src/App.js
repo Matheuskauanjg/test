@@ -8,7 +8,7 @@ const App = () => {
       <NeuralNetwork />
       <div className="content">
         <header>
-          <h1>Matheus Kauan pinto</h1>
+          <h1>Matheus Kauan Pinto</h1>
           <p>Programador | 20 anos</p>
         </header>
 
