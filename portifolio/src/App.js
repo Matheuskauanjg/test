@@ -9,7 +9,7 @@ const App = () => {
       <div className="content">
         <header>
           <h1>Matheus Kauan Pinto</h1>
-          <p>Programador | 20 anos</p>
+          <p>Programador | 210 anos</p>
         </header>
 
         <div className="info-container">
